@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// 访问：http://localhost:8080/servlet-learn/servletdemo
+// 访问：http://localhost:8080/web-learn/servletdemo
 //@WebServlet(description = "servlet学习1", urlPatterns = { "/servletdemo" }) // url匹配放在web.xml中
 public class ServletDemo extends HttpServlet {
     private static final long serialVersionUID = 1L;
