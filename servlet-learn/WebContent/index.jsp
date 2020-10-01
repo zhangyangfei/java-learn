@@ -11,6 +11,6 @@
     <title>首页</title>
   </head>
   <body>
-  欢迎。。。web-learn
+  欢迎。。。servlet-learn
   </body>
 </html>
