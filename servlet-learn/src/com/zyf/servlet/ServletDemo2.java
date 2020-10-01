@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// ���ʣ�http://localhost:8080/servlet-learn/servletdemo2
-@WebServlet(description = "servletѧϰ2", urlPatterns = { "/servletdemo2" })
+// 访问：http://localhost:8080/servlet-learn/servletdemo2
+@WebServlet(description = "servlet学习2", urlPatterns = { "/servletdemo2" })
 public class ServletDemo2 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

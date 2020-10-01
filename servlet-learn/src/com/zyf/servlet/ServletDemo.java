@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// ·ÃÎÊ£ºhttp://localhost:8080/servlet-learn/servletdemo
-//@WebServlet(description = "servletÑ§Ï°1", urlPatterns = { "/servletdemo" }) // urlÆ¥Åä·ÅÔÚweb.xmlÖĞ
+// è®¿é—®ï¼šhttp://localhost:8080/servlet-learn/servletdemo
+//@WebServlet(description = "servletå­¦ä¹ 1", urlPatterns = { "/servletdemo" }) // urlåŒ¹é…æ”¾åœ¨web.xmlä¸­
 public class ServletDemo extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    public ServletDemo() {
-        super();
-    }
+
+	public ServletDemo() {
+		super();
+	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
