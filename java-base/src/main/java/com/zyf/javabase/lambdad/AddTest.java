@@ -18,7 +18,10 @@ public class AddTest {
         // 右侧表示实现Add接口的实现类，但是只将重写方法的内部逻辑代码展示，一切从简
         Add a = (x, y) -> x + y;
 
+        // 右侧表示实现Runnable接口的实现类
         Runnable ra = () -> System.out.println("重写方法run方法");
+        new Thread(ra).start();
+
     }
 
     private static void add1(Add add) {
