@@ -89,6 +89,7 @@ public class reflectTest {
         Constructor<?> con2 = clazz.getDeclaredConstructor(String.class);
         // 对于私有构造方法，暴力反射
         con2.setAccessible(true);
+//        clazz.newInstance();// 类对象只能获取空参构造方法
         Object obj2 = con2.newInstance("张三");
         System.out.println(obj2);
 
@@ -96,5 +97,6 @@ public class reflectTest {
         Constructor<?> con3 = clazz.getConstructor(String.class, int.class);
         Object obj3 = con3.newInstance("张三", 30);
         System.out.println(obj3);
+
     }
 }
