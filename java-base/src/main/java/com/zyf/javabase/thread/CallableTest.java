@@ -32,7 +32,7 @@ public class CallableTest {
         // 获取线程结果，get()是个阻塞主线程运行的方法
 //        Integer result = ft.get();
         // 获取线程结果，get(long timeout, TimeUnit unit)，重载方法，超时则抛出异常
-        Integer result = ft.get(1999, TimeUnit.MILLISECONDS);
+        Integer result = ft.get(2000, TimeUnit.MILLISECONDS);
         System.out.println(t.getName() + "是否结束：" + ft.isDone());
         System.out.println(t.getName() + "执行结果：" + result);
     }
