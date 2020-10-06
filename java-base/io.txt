@@ -1,0 +1,53 @@
+字节流
+	InputStream
+	方法：read(byte[] b)、read(byte[] b, int off, int len)
+	FileInputStream
+	构造函数(String 文件名)
+	构造函数(File file)x
+	FilterInputStream
+	BufferedInputStream
+	字节输入缓冲流，其内部会创建一个读取数据缓冲区，而不会每个字节地从文件中读取
+	构造函数（InputStream in）
+	构造函数(InputStream in,int 缓冲字节数据大小)
+	常见转换
+	BufferedInputStream bis = new BufferedInputStream(new FileInputStream(new File("io.txt")), 1024);
+	OutputStream
+	方法：write(byte[] b)、write(byte[] b, int off, int len)
+	FileOutputStream
+	构造函数(String name)
+	构造函数(File file)
+	构造函数(File file, boolean 是否为追加写入)
+	FilterOutputStream
+	BufferedOutputStream：缓冲流
+	构造函数（OutputStream out）
+	构造函数（OutputStream out,int 缓冲字节数组大小）
+字符流
+	Reader
+	方法：read()、read(char[] cbuf)
+	InputStreamReader
+	字节流转字符流
+	构造函数(InputStream in, String 编码名称)
+	子类FileReader：读取字符文件的方便类
+	构造函数(String fileName)
+	构造函数(File file)
+	BufferedReader：缓冲流
+	构造函数(Reader in)
+	构造函数(Reader in, int 缓冲区大小)
+	Writer：
+	方法：write(String str)、write(char[] cbuf)、flush()
+	OutputStreamWriter
+	字符流转字节流
+	构造函数(OutputStream out)
+	构造函数(OutputStream out, String 编码名称)
+	子类FileWriter：写入字符文件的方便类
+	构造函数(String fileName)
+	构造函数(File file)
+	构造函数(File file, boolean 是否为追加写入)
+	BufferedWriter：缓冲流；构造函数(Writer out, int 缓冲区大小)
+File
+	构造函数(String pathname)
+	构造函数(String parent, String child)
+	构造函数(File parent, String child)
+String编码
+	编码：byte[] b = string.getBytes(String 编码名称)
+	解码：构造函数String(byte[] bytes, String 编码名称)
