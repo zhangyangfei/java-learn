@@ -37,9 +37,12 @@ public class IoTest {
 //        readFile5();
 
 //        writeFile1();
-        writeFile2(); // 常用
+//        writeFile2(); // 常用
 //        writeFile3();
-        writeFile4();// 常用
+//        writeFile4();// 常用
+//        copyFile1();
+//        copyFile2();
+        copyFile3();
     }
 
     /**
@@ -240,5 +243,99 @@ public class IoTest {
         br.close();
         fr.close();
         return lines;
+    }
+
+    // =======================================下面是复制文件比较=====================================================
+    /**
+     * 复制件方式1：字节流、缓存字节数组
+     */
+    private static void copyFile1() {
+        // 缓存字节数组大小
+        int cacheSize = 1024 * 1024 * 20 ;
+        Long start = System.currentTimeMillis();
+        try (InputStream fis = new FileInputStream(new File("E:\\09.自定义线程池-线程池类和测试类编写.avi"));
+             OutputStream fos = new FileOutputStream(new File("E:\\copyFile1.avi"))) {
+            byte[] bytes = new byte[cacheSize];
+            int len;
+            while ((len = fis.read(bytes)) != -1) {
+                fos.write(bytes, 0, len);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Long end = System.currentTimeMillis();
+        System.out.println("copyFile1耗时：" + (end - start));
+        /*
+           size -> 耗时
+               1KB = 1024 * 1  -> 1561
+               5KB =  1024 * 5 -> 639
+               10KB =  1024 * 10 -> 428  【最优】
+               1MB = 1024 * 1024  -> 441
+               10MB = 1024 * 1024 * 10  -> 458
+               20MB = 1024 * 1024 * 20  -> 490
+               现象：缓存字节数组大小设置为 10KB时即可达到较高性能，再增大性能不提升
+         */
+    }
+
+    /**
+     * 复制件方式2：字节缓冲流、缓存字节数组
+     */
+    private static void copyFile2() {
+        // 缓冲区大小
+        int cacheSize = 1024 * 1024 * 20;
+        Long start = System.currentTimeMillis();
+        try (BufferedInputStream bis = new BufferedInputStream(new FileInputStream(new File("E:\\09.自定义线程池-线程池类和测试类编写.avi")),cacheSize);
+             BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File("E:\\copyFile2.avi")),cacheSize)) {
+            int len;
+            // 缓存字节数组
+            byte[] bytes = new byte[1024 * 10];
+            while ((len = bis.read(bytes)) != -1) {
+                bos.write(bytes, 0, len);
+                bos.flush();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Long end = System.currentTimeMillis();
+        System.out.println("copyFile2耗时：" + (end - start)); // 1054
+        /*
+            缓冲区大小和缓存字节数据大小相同地设置
+            size -> 耗时
+               1KB = 1024 * 1  -> 1679
+               5KB =  1024 * 5 -> 774
+               10KB =  1024 * 10 -> 408
+               1MB = 1024 * 1024  -> 435
+               10MB = 1024 * 1024 * 10  -> 459
+               20MB = 1024 * 1024 * 20  -> 527
+         */
+         /*
+            new byte[1024 * 10]固定，以下为缓冲区大小：
+            size -> 耗时
+               1KB = 1024 * 1  -> 409
+               5KB =  1024 * 5 -> 466
+               10KB =  1024 * 10 -> 435
+               1MB = 1024 * 1024  -> 575
+               10MB = 1024 * 1024 * 10  -> 515
+               20MB = 1024 * 1024 * 20  -> 563
+               现象：缓冲区大小对读写耗时影响不大
+         */
+    }
+
+    /**
+     * 复制件方式3：字节流，每个字节单独读写，不要使用该方式
+     */
+    private static void copyFile3() {
+        Long start = System.currentTimeMillis();
+        try (InputStream fis = new FileInputStream(new File("E:\\09.自定义线程池-线程池类和测试类编写.avi"));
+             OutputStream fos = new FileOutputStream(new File("E:\\copyFile3.avi"))) {
+            int len;
+            while ((len = fis.read()) != -1) {
+                fos.write(len);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Long end = System.currentTimeMillis();
+        System.out.println("copyFile1耗时：" + (end - start)); // 反正很久，等不及了
     }
 }
