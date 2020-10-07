@@ -129,6 +129,7 @@ public class IoTest {
                 // 按照行写（一个数据对象需要解析成一行数据时适用）
                 bw.write(line);
                 bw.newLine();
+                bw.flush();
             }
         } catch (IOException e) {
             e.printStackTrace();
