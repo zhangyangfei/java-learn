@@ -1,6 +1,12 @@
 package com.zyf.javabase.thread;
 
-import java.util.concurrent.*;
+//import java.util.concurrent.*;
+
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Callable创建线程
