@@ -26,6 +26,7 @@ public class reflectTest {
         Class<?> clazz = Class.forName(classStr);
 
 
+
         constructorTest(clazz);
         fieldTest(clazz);
         methodTest(clazz);
